@@ -71,3 +71,12 @@ function hasClass(el, className) {
     else
         return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
 }
+
+function addStyleByClass(className, rules) {
+    let elements = document.getElementsByClassName(className);
+
+    for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        element.setAttribute('style', rules);
+    }
+}
