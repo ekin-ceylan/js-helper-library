@@ -11,6 +11,10 @@ export const £ = tag => {
   return addExtensions(element);
 };
 
+export function div(...classes) {
+    return createElement('div').addClass(...classes);
+}
+
 function addExtensions(el) {
   el.addClass = function (...className) {
     this.classList.add(...className);
