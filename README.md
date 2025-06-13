@@ -4,7 +4,21 @@ A lightweight, modular collection of helper functions written in Vanilla JavaScr
 The goal is to bring just enough utility to your project — no external libraries, no bloat.
 
 ## 📁 Project Structure
-
+```
+js-helper-library/
+├── extensions/ → Native object extensions (e.g., Array.prototype)
+│   └── array.js
+├── helpers/ → Standalone utility functions
+│   ├── dom-helper.js → $(), £(), addExtensions()
+│   └── utilities.js → General-purpose small helpers
+├── modules/ → Self-contained modules
+│   └── service-call.js → API/fetch helpers
+├── README.md
+├── .editorconfig *
+├── .prettierrc *
+├── .prettierignore *
+└── .gitignore
+```
 
 ## 🚀 Usage
 
@@ -22,18 +36,15 @@ import { £, $ } from './helpers/dom-helper.js';
   .appendTo(document.body);
 ```
 
-Note: Files like array.js extend global prototypes. Make sure to import them only once.
+> Note: Files like array.js extend global prototypes. Make sure to import them only once.
 
-🎯 Goals
+## 🎯 Goals
 
-    Minimal and extensible
+Minimal and extensible
+Fully compatible with modern browsers
+Zero dependencies
+"Just enough jQuery" philosophy
 
-    Fully compatible with modern browsers
+## 🤝 Contributing
 
-    Zero dependencies
-
-    "Just enough jQuery" philosophy
-
-🤝 Contributing
-
-Suggestions and new modules are welcome — but please keep things small, simple, and focused.
+> Suggestions and new modules are welcome — but please keep things small, simple, and focused.
