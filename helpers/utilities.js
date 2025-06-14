@@ -15,7 +15,9 @@ export function classMap(...args) {
         .flatMap(arg =>
             typeof arg === 'string'
                 ? [arg]
-                : Object.entries(arg).filter(([_, val]) => val).map(([key]) => key)
+                : Object.entries(arg)
+                      .filter(([_, val]) => val)
+                      .map(([key]) => key)
         )
         .join(' ');
 }
