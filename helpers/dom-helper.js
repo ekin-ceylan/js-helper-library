@@ -20,27 +20,33 @@ export function p(...classes) {
 }
 
 function addExtensions(el) {
-    el.addClass = function (...className) {
-        this.classList.add(...className);
-        return this;
-    };
-    el.removeClass = function (...className) {
-        this.classList.remove(...className);
-        return this;
-    };
+    el.addClass = addClass.bind(el);
+  el.removeClass = removeClass.bind(el);
+  el.hasClass = hasClass.bind(el);
+  el.attr = attr.bind(el);
+    
+  return el;
+}
 
-    el.hasClass = function (className) {
-        return this.classList.contains(className);
-    };
+function addClass(...classNames) {
+  this.classList.add(...classNames);
+  return this;
+}
 
-    el.attr = function (key, value) {
-        if (value) {
-            this.setAttribute(key, value);
-            return this;
-        }
+function removeClass(...classNames) {
+  this.classList.remove(...classNames);
+  return this;
+}
 
-        return this.getAttribute(key);
-    };
+function hasClass(className) {
+  return this.classList.contains(className);
+}
 
-    return el;
+function attr(key, value) {
+  if (value !== undefined) {
+    this.setAttribute(key, value);
+    return this;
+  }
+    
+  return this.getAttribute(key);
 }
