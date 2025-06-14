@@ -12,13 +12,25 @@ export const C = tag => {
 };
 
 export function div(...classes) {
-    return createElement('div').addClass(...classes);
+    return C('div').addClass(...classes);
+}
+
+export function p(...classes) {
+    return C('p').addClass(...classes);
 }
 
 function addExtensions(el) {
     el.addClass = function (...className) {
         this.classList.add(...className);
         return this;
+    };
+    el.removeClass = function (...className) {
+        this.classList.remove(...className);
+        return this;
+    };
+
+    el.hasClass = function (className) {
+        return this.classList.contains(className);
     };
 
     el.attr = function (key, value) {
