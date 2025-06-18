@@ -48,3 +48,7 @@ Zero dependencies
 ## 🤝 Contributing
 
 > Suggestions and new modules are welcome — but please keep things small, simple, and focused.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
