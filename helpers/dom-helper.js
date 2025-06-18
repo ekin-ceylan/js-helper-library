@@ -1,3 +1,10 @@
+/**
+ * Selects DOM elements matching the given CSS selector and adds extensions to each element.
+ *
+ * @param {string} selector - The CSS selector to match elements against.
+ * @returns {Element|NodeListOf<Element>} The first matched element if only one is found,
+ * or a NodeList of matched elements if more than one is found.
+ */
 export function S(selector) {
     const elements = document.querySelectorAll(selector);
     elements.forEach(addExtensions);
@@ -5,6 +12,12 @@ export function S(selector) {
     return elements.length > 1 ? elements : elements[0];
 }
 
+/**
+ * Creates a new DOM element of the specified tag and applies additional extensions to it.
+ *
+ * @param {string} tag - The tag name of the element to create (e.g., 'div', 'span').
+ * @returns {Element} The newly created and extended DOM element.
+ */
 export function C(tag) {
     const element = document.createElement(tag);
 
@@ -57,6 +70,12 @@ function attr(key, value) {
     return this.getAttribute(key);
 }
 
+/**
+ * Gets or sets the text content of the current element.
+ *
+ * @param {string} [content] - The text content to set. If omitted, the current text content is returned.
+ * @returns {string|this} Returns the current text content if no argument is provided, otherwise returns the element itself for chaining.
+ */
 function text(content) {
     if (content !== undefined) {
         this.textContent = content;
@@ -66,6 +85,12 @@ function text(content) {
     return this.textContent;
 }
 
+/**
+ * Gets or sets the HTML content of the current element.
+ *
+ * @param {string} [content] - The HTML string to set as the element's content. If omitted, returns the current HTML content.
+ * @returns {string|this} Returns the current HTML content if no argument is provided, otherwise returns the element for chaining.
+ */
 function html(content) {
     if (content !== undefined) {
         this.innerHTML = content;
