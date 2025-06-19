@@ -43,6 +43,7 @@ function addExtensions(el) {
     el.text = text.bind(el);
 
     el.append = append.bind(el);
+    el.appendTo = appendTo.bind(el);
 
     return el;
 }
@@ -104,5 +105,10 @@ function append(child) {
     const node = child instanceof Node ? child : document.createTextNode(child);
     this.appendChild(node);
 
+    return this;
+}
+
+function appendTo(parent) {
+    parent.appendChild(this);
     return this;
 }
