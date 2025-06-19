@@ -9,7 +9,7 @@ js-helper-library/
 ├── extensions/ → Native object extensions (e.g., Array.prototype)
 │   └── array.js
 ├── helpers/ → Standalone utility functions
-│   ├── dom-helper.js → S(), C(), div(), p(), addExtensions()
+│   ├── dom-helper.js → S(), C(), div(), p(), appendTo(), addExtensions()
 │   └── utilities.js → General-purpose small helpers
 ├── modules/ → Self-contained modules
 │   └── service-call.js → API/fetch helpers
@@ -28,12 +28,16 @@ import './extensions/array.js';
 const nums = [1, 2, 2, 3];
 console.log(nums.unique().first()); // [1, 2, 3] → 1
 
-import { C, S } from './helpers/dom-helper.js';
+import { C, S, div, p } from './helpers/dom-helper.js';
 
-C('div')
+const main = C('div')
   .addClass('box')
   .attr('id', 'main')
   .appendTo(document.body);
+
+S('#main').append(
+  p().text('Hello World')
+);
 ```
 
 > Note: Files like array.js extend global prototypes. Make sure to import them only once.
