@@ -5,7 +5,7 @@
  * @returns {Element|NodeListOf<Element>} The first matched element if only one is found,
  * or a NodeList of matched elements if more than one is found.
  */
-export function S(selector) {
+function S(selector) {
     const elements = document.querySelectorAll(selector);
     elements.forEach(addExtensions);
 
@@ -18,19 +18,21 @@ export function S(selector) {
  * @param {string} tag - The tag name of the element to create (e.g., 'div', 'span').
  * @returns {Element} The newly created and extended DOM element.
  */
-export function C(tag) {
+function C(tag) {
     const element = document.createElement(tag);
 
     return addExtensions(element);
 }
 
-export function div(...classes) {
+function div(...classes) {
     return C('div').addClass(...classes);
 }
 
-export function p(...classes) {
+function p(...classes) {
     return C('p').addClass(...classes);
 }
+
+export { S, C, div, p };
 
 function addExtensions(el) {
     el.addClass = addClass.bind(el);
