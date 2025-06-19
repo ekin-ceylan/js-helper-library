@@ -109,6 +109,11 @@ function append(child) {
 }
 
 function appendTo(parent) {
-    parent.appendChild(this);
+    if (typeof target === 'string') {
+        target = document.querySelector(target);
+    }    
+    if (target instanceof HTMLElement) {
+        target.appendChild(this);
+    }
     return this;
 }
