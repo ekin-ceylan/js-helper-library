@@ -8,11 +8,14 @@ The goal is to bring just enough utility to your project — no external librari
 js-helper-library/
 ├── extensions/ → Native object extensions (e.g., Array.prototype)
 │   └── array.js
+│
 ├── helpers/ → Standalone utility functions
 │   ├── dom-helper.js → S(), C(), div(), p(), appendTo(), addExtensions()
 │   └── utilities.js → General-purpose small helpers
+│
 ├── modules/ → Self-contained modules
 │   └── service-call.js → API/fetch helpers
+│
 ├── README.md
 ├── .editorconfig *
 ├── .prettierrc *
