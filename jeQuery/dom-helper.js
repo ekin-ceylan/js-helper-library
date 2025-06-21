@@ -103,17 +103,15 @@ function html(content) {
     return this.innerHTML;
 }
 
-function append(child) {
-    const node = child instanceof Node ? child : document.createTextNode(child);
-    this.appendChild(node);
-
+function append(...childNodes) {
+    this.append(...childNodes);
     return this;
 }
 
 function appendTo(parent) {
     if (typeof target === 'string') {
         target = document.querySelector(target);
-    }    
+    }
     if (target instanceof HTMLElement) {
         target.appendChild(this);
     }

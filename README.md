@@ -4,14 +4,19 @@ A lightweight, modular collection of helper functions written in Vanilla JavaScr
 The goal is to bring just enough utility to your project — no external libraries, no bloat.
 
 ## 📁 Project Structure
+
 ```
 js-helper-library/
 ├── extensions/ → Native object extensions (e.g., Array.prototype)
 │   └── array.js
 │
 ├── helpers/ → Standalone utility functions
-│   ├── dom-helper.js → S(), C(), div(), p(), appendTo(), addExtensions()
 │   └── utilities.js → General-purpose small helpers
+│
+├── jeQuery/ → just-enough-Query modules
+│   ├── dom-helper.js → S(), C(), div(), p(), appendTo(), addExtensions()
+│   ├── mini-wrapper.js →
+│   └── prototype-booster.js →
 │
 ├── modules/ → Self-contained modules
 │   └── service-call.js → API/fetch helpers
@@ -33,14 +38,9 @@ console.log(nums.unique().first()); // [1, 2, 3] → 1
 
 import { C, S, div, p } from './helpers/dom-helper.js';
 
-const main = C('div')
-  .addClass('box')
-  .attr('id', 'main')
-  .appendTo(document.body);
+const main = C('div').addClass('box').attr('id', 'main').appendTo(document.body);
 
-S('#main').append(
-  p().text('Hello World')
-);
+S('#main').append(p().text('Hello World'));
 ```
 
 > Note: Files like array.js extend global prototypes. Make sure to import them only once.
