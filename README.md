@@ -1,7 +1,7 @@
 # JS Helper Library
 
 A lightweight, modular collection of helper functions written in Vanilla JavaScript.  
-The goal is to bring just enough utility to your project — no external libraries, no bloat.
+The goal is to bring just enough utility to your project: no external libraries, no bloat.
 
 ## 📁 Project Structure
 
