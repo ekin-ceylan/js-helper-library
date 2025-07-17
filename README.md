@@ -30,6 +30,10 @@ js-helper-library/
 
 ## 🚀 Usage
 
+### jeQuery
+
+Next: extend, animation, parent, siblings, input val, show/hide, eventListener on/off, ready, css/style
+
 ```js
 import './extensions/array.js';
 
