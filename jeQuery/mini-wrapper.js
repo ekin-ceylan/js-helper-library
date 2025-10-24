@@ -15,6 +15,8 @@ class Q {
     constructor(sel) {
         if (typeof sel === 'string') {
             this.#nodes = [...document.querySelectorAll(sel)];
+        } else if (sel == window || sel === document) {
+            this.#nodes = [sel];
         } else if (sel instanceof Node) {
             this.#nodes = [sel];
         } else if (sel && typeof sel[Symbol.iterator] === 'function') {
