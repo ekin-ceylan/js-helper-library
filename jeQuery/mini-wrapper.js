@@ -55,7 +55,7 @@ class Q {
     * @returns {Node|Node[]|undefined} The Node at the specified index, all Nodes as an array, or undefined if out of bounds.
     */
     get(idx) {
-        return idx === undefined ? this.#nodes[idx] : this.#nodes;
+        return idx === undefined ? this.#nodes : this.#nodes[idx];
     }
 }
 
