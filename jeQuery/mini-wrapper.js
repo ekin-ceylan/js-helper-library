@@ -50,20 +50,12 @@ class Q {
     }
 
     /**
-     * Returns the Node at the specified index.
-     * @param {number} [idx=0] - The index of the Node to retrieve.
-     * @returns {Node|undefined} The Node at the specified index, or undefined if out of bounds.
-     */
-    get(idx = 0) {
-        return this.#nodes[idx];
-    }
-
-    /**
-     * Returns all selected Nodes as an array.
-     * @returns {Node[]} Array of selected Nodes.
-     */
-    all() {
-        return this.#nodes;
+    * Returns the Node at the specified index, or all Nodes as an array if no index is provided.
+    * @param {number} [idx] - The index of the Node to retrieve. If undefined, returns all Nodes as an array.
+    * @returns {Node|Node[]|undefined} The Node at the specified index, all Nodes as an array, or undefined if out of bounds.
+    */
+    get(idx) {
+        return idx === undefined ? this.#nodes[idx] : this.#nodes;
     }
 }
 
