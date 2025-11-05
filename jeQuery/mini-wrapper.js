@@ -21,6 +21,8 @@ class Q {
             this.#nodes = [sel];
         } else if (sel && typeof sel[Symbol.iterator] === 'function') {
             this.#nodes = [...sel]; // assume NodeList, HTMLCollection or Array
+        } else {
+            this.#nodes = []; // unsupported -> empty set
         }
     }
 
