@@ -24,16 +24,31 @@ function C(tag) {
     return addExtensions(element);
 }
 
+/**
+ * Creates a div element and applies the provided CSS classes.
+ * @param {...string} classes - CSS classes to add to the created element.
+ * @returns {Element} The created div element.
+ */
 function div(...classes) {
     return C('div').addClass(...classes);
 }
 
+/**
+ * Creates a paragraph element and applies the provided CSS classes.
+ * @param {...string} classes - CSS classes to add to the created element.
+ * @returns {Element} The created paragraph element.
+ */
 function p(...classes) {
     return C('p').addClass(...classes);
 }
 
 export { S, C, div, p };
 
+/**
+ * Attaches helper methods to a DOM element instance.
+ * @param {Element} el - The element to extend.
+ * @returns {Element} The same element with helper methods attached.
+ */
 function addExtensions(el) {
     el.addClass = addClass.bind(el);
     el.removeClass = removeClass.bind(el);
@@ -50,20 +65,41 @@ function addExtensions(el) {
     return el;
 }
 
+/**
+ * Adds one or more class names to the current element.
+ * @param {...string} classNames - CSS classes to add.
+ * @returns {this} The current element for chaining.
+ */
 function addClass(...classNames) {
     this.classList.add(...classNames);
     return this;
 }
 
+/**
+ * Removes one or more class names from the current element.
+ * @param {...string} classNames - CSS classes to remove.
+ * @returns {this} The current element for chaining.
+ */
 function removeClass(...classNames) {
     this.classList.remove(...classNames);
     return this;
 }
 
+/**
+ * Checks whether the current element contains a CSS class.
+ * @param {string} className - The class name to test.
+ * @returns {boolean} True when the class exists on the element.
+ */
 function hasClass(className) {
     return this.classList.contains(className);
 }
 
+/**
+ * Gets or sets an attribute on the current element.
+ * @param {string} key - The attribute name.
+ * @param {string} [value] - The value to set. If omitted, the attribute is read.
+ * @returns {string|this|null} The attribute value when reading, or the element for chaining when writing.
+ */
 function attr(key, value) {
     if (value !== undefined) {
         this.setAttribute(key, value);
@@ -103,11 +139,21 @@ function html(content) {
     return this.innerHTML;
 }
 
+/**
+ * Appends one or more child nodes to the current element.
+ * @param {...Node|string} childNodes - Child nodes or strings to append.
+ * @returns {this} The current element for chaining.
+ */
 function append(...childNodes) {
     this.append(...childNodes);
     return this;
 }
 
+/**
+ * Appends the current element to a parent element.
+ * @param {string|HTMLElement} parent - Selector or target element that will receive the current element.
+ * @returns {this} The current element for chaining.
+ */
 function appendTo(parent) {
     if (typeof target === 'string') {
         target = document.querySelector(target);

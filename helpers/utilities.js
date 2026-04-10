@@ -22,16 +22,22 @@ export function classMap(...args) {
         .join(' ');
 }
 
+/**
+ * Injects a style tag into the document head after minifying the provided CSS text.
+ * @param {string} styleId - The id to assign to the generated style element.
+ * @param {string} styleText - Raw CSS text to inject.
+ * @returns {void}
+ */
 export function injectStyles(styleId, styleText) {
     if (!styleId || !styleText || document.getElementById(styleId)) {
-        return
+        return;
     }
 
     const clean = styleText
-        .replace(/(^\s+)|\n|(\s+$)/gm, '') // Remove newlines and leading/trailing spaces
-        .replace(/\s*;?\s*}\s*/g, '}') // Remove any unnecessary spaces around '}' and the last ';'
-        .replace(/\s*{\s*/g, '{') // Remove unnecessary spaces around '{'
-        .replace(/\s*:\s*/g, ':') // Remove unnecessary spaces around ':'
+        .replaceAll(/(^\s+)|\n|(\s+$)/gm, '') // Remove newlines and leading/trailing spaces
+        .replaceAll(/\s*;?\s*}\s*/g, '}') // Remove any unnecessary spaces around '}' and the last ';'
+        .replaceAll(/\s*{\s*/g, '{') // Remove unnecessary spaces around '{'
+        .replaceAll(/\s*:\s*/g, ':') // Remove unnecessary spaces around ':'
         .trim();
 
     const style = document.createElement('style');
@@ -40,6 +46,11 @@ export function injectStyles(styleId, styleText) {
     document.head.appendChild(style);
 }
 
+/**
+ * Validates a Turkish national identification number.
+ * @param {string|number} value - The candidate identity number.
+ * @returns {boolean} True when the value matches the validation rules.
+ */
 export function checkTcNo(value) {
     const valueStr = value.toString();
     const valueArr = Array.from(valueStr.split(''), x => Number(x));
@@ -66,6 +77,11 @@ export function checkTcNo(value) {
     return (totalOdd * 8) % 10 === valueArr[10];
 }
 
+/**
+ * Validates a Turkish tax identification number.
+ * @param {string} no - The 10-digit tax number to validate.
+ * @returns {boolean} True when the number is valid.
+ */
 export function checkTaxNo(no) {
     const check = false;
     const taxNo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -74,12 +90,12 @@ export function checkTaxNo(no) {
     let total = 0;
     let checkDigit = 0;
 
-    if (!no || no.length !== 10) {
+    if (no?.length !== 10) {
         return check;
     }
 
     for (let i = 0; i < 9; i++) {
-        taxNo[i] = parseInt(no.substr(i, 1)) - i + 9;
+        taxNo[i] = Number.parseInt(no.substr(i, 1)) - i + 9;
 
         if (taxNo[i] > 9) {
             taxNo[i] = taxNo[i] - 10;
@@ -108,9 +124,14 @@ export function checkTaxNo(no) {
         checkDigit = x + 10 - total;
     }
 
-    return parseInt(no.substr(9, 1)) === checkDigit;
+    return Number.parseInt(no.substr(9, 1)) === checkDigit;
 }
 
+/**
+ * Validates either a Turkish tax number or national identification number by length.
+ * @param {string} no - The candidate value to validate.
+ * @returns {boolean} True when the provided value is valid.
+ */
 export function checkTaxTc(no) {
     const len = no?.length;
 
@@ -121,6 +142,11 @@ export function checkTaxTc(no) {
     return len === 10 ? that.checkTaxNo(no) : that.checkTcNo(no);
 }
 
+/**
+ * Validates a Turkish vehicle plate number.
+ * @param {string} plateNo - The plate number to validate.
+ * @returns {boolean} True when the plate number matches the expected format.
+ */
 export function checkPlateNo(plateNo) {
     const regex = /^\d{2}[A-PR-VYZa-hj-pr-vyzı]{1,3}\d{2,5}$/;
 
