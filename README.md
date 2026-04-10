@@ -32,8 +32,6 @@ js-helper-library/
 
 ### jeQuery
 
-Next: extend, animation, parent, siblings, input val, show/hide, eventListener on/off, ready, css/style
-
 ```js
 import './extensions/array.js';
 
@@ -48,6 +46,15 @@ S('#main').append(p().text('Hello World'));
 ```
 
 > Note: Files like array.js extend global prototypes. Make sure to import them only once.
+
+#### mini-wrapper principles
+
+- Accepts selector strings, single DOM nodes, document/window references, and iterable DOM collections.
+- Unsupported input resolves to an empty selection instead of throwing.
+- Getter methods read from the first available item and return a neutral fallback when empty.
+- Setter and mutating methods stay chainable and return the current wrapper.
+- Traversal and search methods return a new wrapper, and unsupported nodes are ignored.
+- The goal is not full jQuery parity; the goal is a small, safe, extensible subset.
 
 ## 🎯 Goals
 
